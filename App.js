@@ -6,13 +6,14 @@ import DailyForecast from "./components/DailyForecast";
 import styled from "styled-components/native";
 import config from "./config";
 import bgImg from "./assets/4.png";
+//import Geolocation from "@react-native-community/geolocation";
 
 const App = () => {
   const [toggleSearch, setToggleSearch] = useState("city");
-  const [city, setCity] = useState("Toronto");
-  const [postalCode, setPostalCode] = useState("L4W1S9");
-  const [lat, setLat] = useState(43.6532);
-  const [long, setLong] = useState(-79.3832);
+  const [city, setCity] = useState("Paris");
+  const [postalCode, setPostalCode] = useState("75000");
+  const [lat, setLat] = useState(48.8534);
+  const [long, setLong] = useState(2.3488);
   const [weather, setWeather] = useState({});
 
   const controller = new AbortController();
@@ -21,19 +22,20 @@ const App = () => {
   //fetch lat long by city
   const fetchLatLongHandler = () => {
     fetch(
-      `http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${config.API_KEY}`
+      `http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=c315a3545cc0eb7c206d2713683579cd`
     )
       .then((res) => res.json())
       .then((data) => {
         setLat(data.coord.lat);
         setLong(data.coord.lon);
+        setCity(data.coord.city);
       });
   };
 
   //fetch lat long by postal code/zip since OpenWeather Api only accepts zips
   const fetchByPostalHandler = () => {
     fetch(
-      `https://maps.googleapis.com/maps/api/geocode/json?key=${config.GOOGLE_KEY}&components=postal_code:${postalCode}`
+      `https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyAcsLJAffB1BNcysadzeVM4pVvHskBpYjc&components=postal_code:${postalCode}`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -45,7 +47,7 @@ const App = () => {
   //updates the weather when lat long changes
   useEffect(() => {
     fetch(
-      `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&exclude=hourly,minutely&units=metric&appid=${config.API_KEY}`,
+      `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&exclude=hourly,minutely&units=metric&appid=c315a3545cc0eb7c206d2713683579cd`,
       { signal }
     )
       .then((res) => res.json())

@@ -28,7 +28,7 @@ const CurrentForecast = ({ currentWeather }) => {
       <SecondaryInfoContainer>
         <Row>
           <DetailsBox>
-            <Label>Feels</Label>
+            <Label>Ressenti</Label>
             <Details>
               {currentWeather.current &&
                 Math.round(currentWeather.current.feels_like)}
@@ -36,7 +36,7 @@ const CurrentForecast = ({ currentWeather }) => {
             </Details>
           </DetailsBox>
           <DetailsBox>
-            <Label>Low</Label>
+            <Label>Minimales</Label>
             <Details>
               {currentWeather.daily &&
                 Math.round(currentWeather.daily[0].temp.min)}
@@ -44,7 +44,7 @@ const CurrentForecast = ({ currentWeather }) => {
             </Details>
           </DetailsBox>
           <DetailsBox>
-            <Label>High</Label>
+            <Label>Maximales</Label>
             <Details>
               {currentWeather.daily &&
                 Math.round(currentWeather.daily[0].temp.max)}
@@ -54,19 +54,19 @@ const CurrentForecast = ({ currentWeather }) => {
         </Row>
         <Row>
           <DetailsBox>
-            <Label>Wind</Label>
+            <Label>Vent</Label>
             <Details>
               {currentWeather.current && currentWeather.current.wind_speed} m/s
             </Details>
           </DetailsBox>
           <DetailsBox>
-            <Label>Humidity</Label>
+            <Label>Humidité</Label>
             <Details>
               {currentWeather.current && currentWeather.current.humidity}%
             </Details>
           </DetailsBox>
           <DetailsBox>
-            <Label>Rain</Label>
+            <Label>Pluie</Label>
             <Details>
               {currentWeather.daily > 0 ? currentWeather.daily[0].rain : "0"} MM
             </Details>

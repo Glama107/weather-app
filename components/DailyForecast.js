@@ -20,7 +20,7 @@ const DailyForecast = ({ day, index }) => {
       </IconTempView>
       <DegreeView>
         <Degree>{Math.round(day.temp.max)}°C</Degree>
-        <FeelsLike>Feels {Math.round(day.feels_like.day)}°C</FeelsLike>
+        <FeelsLike>Ressenti {Math.round(day.feels_like.day)}°C</FeelsLike>
       </DegreeView>
     </DayContainer>
   );
